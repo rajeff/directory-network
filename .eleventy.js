@@ -4,7 +4,11 @@ module.exports = function(eleventyConfig) {
   
   // Date filters
   eleventyConfig.addFilter("dateFormat", (date) => {
-    return new Date(date).toLocaleDateString('en-US', {
+    // 11ty converts YAML dates to Date objects at UTC midnight
+    // Add 12 hours to avoid timezone day-shift issues
+    const d = new Date(date);
+    d.setHours(d.getHours() + 12);
+    return d.toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
