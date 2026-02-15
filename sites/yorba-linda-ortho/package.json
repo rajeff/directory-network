@@ -1,0 +1,16 @@
+{
+  "name": "yorba-linda-ortho",
+  "version": "1.0.0",
+  "description": "Yorba Linda Orthodontists Directory",
+  "scripts": {
+    "build": "npx @11ty/eleventy",
+    "serve": "npx @11ty/eleventy --serve",
+    "watch": "npx @11ty/eleventy --watch"
+  },
+  "keywords": ["directory", "11ty", "seo", "orthodontists"],
+  "author": "Robot Army",
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

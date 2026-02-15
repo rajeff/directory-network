@@ -1,0 +1,101 @@
+---
+layout: base.njk
+title: "Add Your Practice | Yorba Linda Orthodontists"
+description: "Get your orthodontic practice listed in our Yorba Linda directory. Featured and standard listings available."
+---
+
+<header>
+    <div class="header-content">
+        <p class="header-eyebrow">For Orthodontists</p>
+        <h1>Get Listed in Our Directory</h1>
+        <p>Reach patients in {{ site.city }} who are actively searching for orthodontic care.</p>
+    </div>
+</header>
+
+<div class="container">
+    <div class="listing" style="margin-bottom: 2rem;">
+        <h2 style="font-family: 'DM Serif Display', Georgia, serif; color: var(--navy); margin-bottom: 1rem;">Why List With Us?</h2>
+        
+        <ul style="color: var(--text-light); margin-bottom: 1.5rem;">
+            <li>Appear in local search results and AI recommendations</li>
+            <li>Reach patients actively looking for orthodontists</li>
+            <li>Full Schema.org markup for enhanced visibility</li>
+            <li>Individual profile page with your services and contact info</li>
+        </ul>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+        <div class="listing featured">
+            <span class="featured-tag">Recommended</span>
+            <h2 style="font-family: 'DM Serif Display', Georgia, serif; color: var(--navy); margin-bottom: 0.5rem;">Featured Listing</h2>
+            <p style="font-size: 2rem; font-weight: 700; color: var(--navy); margin-bottom: 1rem;">$99<span style="font-size: 1rem; font-weight: 400; color: var(--text-light);">/month</span></p>
+            
+            <ul style="color: var(--text-light); margin-bottom: 1.5rem;">
+                <li>Top position in directory</li>
+                <li>Featured badge</li>
+                <li>Full description & services</li>
+                <li>Direct contact info displayed</li>
+                <li>Priority in category pages</li>
+                <li>Highlighted in blog articles</li>
+            </ul>
+            
+            <a href="#contact" class="btn" style="width: 100%; text-align: center;">Get Featured</a>
+        </div>
+        
+        <div class="listing">
+            <h2 style="font-family: 'DM Serif Display', Georgia, serif; color: var(--navy); margin-bottom: 0.5rem;">Standard Listing</h2>
+            <p style="font-size: 2rem; font-weight: 700; color: var(--navy); margin-bottom: 1rem;">$49<span style="font-size: 1rem; font-weight: 400; color: var(--text-light);">/month</span></p>
+            
+            <ul style="color: var(--text-light); margin-bottom: 1.5rem;">
+                <li>Listed in directory</li>
+                <li>Practice name & location</li>
+                <li>Services tags</li>
+                <li>Link to your website</li>
+                <li>Individual profile page</li>
+            </ul>
+            
+            <a href="#contact" class="btn btn-outline" style="width: 100%; text-align: center;">Get Listed</a>
+        </div>
+    </div>
+    
+    <div class="listing" id="contact">
+        <h2 style="font-family: 'DM Serif Display', Georgia, serif; color: var(--navy); margin-bottom: 1rem;">Request a Listing</h2>
+        <p style="color: var(--text-light); margin-bottom: 1.5rem;">Fill out the form below and we'll get your practice added within 24 hours.</p>
+        
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="display: grid; gap: 1rem;">
+            <div>
+                <label style="display: block; margin-bottom: 0.25rem; font-weight: 500;">Practice Name *</label>
+                <input type="text" name="practice_name" required style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px;">
+            </div>
+            <div>
+                <label style="display: block; margin-bottom: 0.25rem; font-weight: 500;">Your Name *</label>
+                <input type="text" name="contact_name" required style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px;">
+            </div>
+            <div>
+                <label style="display: block; margin-bottom: 0.25rem; font-weight: 500;">Email *</label>
+                <input type="email" name="email" required style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px;">
+            </div>
+            <div>
+                <label style="display: block; margin-bottom: 0.25rem; font-weight: 500;">Phone</label>
+                <input type="tel" name="phone" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px;">
+            </div>
+            <div>
+                <label style="display: block; margin-bottom: 0.25rem; font-weight: 500;">Listing Type *</label>
+                <select name="listing_type" required style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px;">
+                    <option value="">Select...</option>
+                    <option value="featured">Featured ($99/mo)</option>
+                    <option value="standard">Standard ($49/mo)</option>
+                </select>
+            </div>
+            <div>
+                <label style="display: block; margin-bottom: 0.25rem; font-weight: 500;">Website</label>
+                <input type="url" name="website" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px;">
+            </div>
+            <div>
+                <label style="display: block; margin-bottom: 0.25rem; font-weight: 500;">Additional Info</label>
+                <textarea name="message" rows="4" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px;"></textarea>
+            </div>
+            <button type="submit" class="btn" style="justify-self: start;">Submit Request</button>
+        </form>
+    </div>
+</div>

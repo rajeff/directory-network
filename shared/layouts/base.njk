@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title or site.title }}</title>
+    <meta name="description" content="{{ description or site.description }}">
+    <meta name="geo.region" content="US-{{ site.state }}">
+    <meta name="geo.placename" content="{{ site.city }}">
+    
+    <meta property="og:title" content="{{ title or site.title }}">
+    <meta property="og:description" content="{{ description or site.description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="/" class="nav-brand">{{ site.city }} {{ site.niche }}</a>
+            <div class="nav-links">
+                <a href="/">Directory</a>
+                <a href="/blog/">Articles</a>
+                <a href="/add-listing/">Get Listed</a>
+            </div>
+        </div>
+    </nav>
+
+    {{ content | safe }}
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h4>{{ site.city }} {{ site.niche }}</h4>
+                <p>Helping {{ site.city }} residents find trusted {{ site.niche | lower }} since 2026.</p>
+            </div>
+            <div class="footer-links">
+                <a href="/blog/">Articles & Guides</a>
+                <a href="/add-listing/">Add Your Practice</a>
+                <a href="/about/">About This Directory</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 {{ site.name }}. Updated {{ site.lastUpdated }}.</p>
+        </div>
+    </footer>
+</body>
+</html>

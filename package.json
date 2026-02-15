@@ -1,0 +1,12 @@
+{
+  "name": "directory-network",
+  "version": "1.0.0",
+  "description": "Monorepo for niche local directory sites",
+  "private": true,
+  "scripts": {
+    "new-site": "./scripts/new-site.sh"
+  },
+  "keywords": ["directory", "11ty", "seo", "monorepo"],
+  "author": "Robot Army",
+  "license": "MIT"
+}

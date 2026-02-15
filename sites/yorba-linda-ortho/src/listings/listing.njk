@@ -1,0 +1,96 @@
+---
+pagination:
+  data: listings
+  size: 1
+  alias: listing
+permalink: "/listings/{{ listing.slug }}/"
+layout: base.njk
+eleventyComputed:
+  title: "{{ listing.name }} | {{ site.city }} {{ site.niche }}"
+---
+
+<header>
+    <div class="header-content">
+        <p class="header-eyebrow"><a href="/" style="color: var(--gold); text-decoration: none;">← Back to Directory</a></p>
+        <h1>{{ listing.name }}</h1>
+        <div class="rating" style="margin-top: 0.5rem;">
+            <span class="stars">{% for i in range(0, listing.rating | round) %}★{% endfor %}</span>
+            <span style="opacity: 0.8; margin-left: 0.5rem;">{{ listing.rating }} rating from {{ listing.reviewCount }} reviews</span>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-top: 1rem;">
+        <div>
+            <div class="listing" style="margin-bottom: 1.5rem;">
+                <h2 style="font-family: 'DM Serif Display', Georgia, serif; color: var(--navy); margin-bottom: 1rem;">About {{ listing.name }}</h2>
+                <p style="color: var(--text-light); line-height: 1.7;">{{ listing.fullDescription or listing.description }}</p>
+                
+                <h3 style="margin-top: 1.5rem; margin-bottom: 0.75rem; color: var(--navy);">Services Offered</h3>
+                <div class="tags">
+                    {% for service in listing.services %}
+                    <span class="tag">{{ service }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div class="cta-box">
+                <h3>Considering orthodontic treatment?</h3>
+                <p>Read our guide to understand your options and what to expect.</p>
+                <a href="/blog/" class="btn">View Guides</a>
+            </div>
+        </div>
+        
+        <div>
+            <div class="listing">
+                <h3 style="color: var(--navy); margin-bottom: 1rem;">Contact Info</h3>
+                
+                <p style="margin-bottom: 0.5rem;"><strong>Address:</strong><br>{{ listing.address }}<br>{{ listing.city }}, {{ listing.state }}{% if listing.zip %} {{ listing.zip }}{% endif %}</p>
+                
+                {% if listing.phone %}
+                <p style="margin-bottom: 0.5rem;"><strong>Phone:</strong><br><a href="tel:{{ listing.phone | replace('(', '') | replace(')', '') | replace(' ', '') | replace('-', '') }}" style="color: var(--navy); font-weight: 600;">{{ listing.phone }}</a></p>
+                {% endif %}
+                
+                {% if listing.website %}
+                <p style="margin-bottom: 1rem;"><strong>Website:</strong><br><a href="{{ listing.website }}" target="_blank" style="color: var(--navy);">Visit Site →</a></p>
+                {% endif %}
+                
+                {% if listing.hours %}
+                <h3 style="color: var(--navy); margin-top: 1.5rem; margin-bottom: 0.75rem;">Hours</h3>
+                <ul style="list-style: none; font-size: 0.9rem; color: var(--text-light);">
+                    {% for day, hours in listing.hours %}
+                    <li style="display: flex; justify-content: space-between; padding: 0.25rem 0; border-bottom: 1px solid #eee;">
+                        <span>{{ day }}</span>
+                        <span>{{ hours }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Dentist",
+    "name": "{{ listing.name }}",
+    "description": "{{ listing.description }}",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "{{ listing.address }}",
+        "addressLocality": "{{ listing.city }}",
+        "addressRegion": "{{ listing.state }}"
+        {% if listing.zip %}, "postalCode": "{{ listing.zip }}"{% endif %}
+    }
+    {% if listing.phone %}, "telephone": "{{ listing.phone }}"{% endif %}
+    {% if listing.website %}, "url": "{{ listing.website }}"{% endif %},
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "{{ listing.rating }}",
+        "reviewCount": "{{ listing.reviewCount }}"
+    }
+}
+</script>
