@@ -1,0 +1,97 @@
+---
+layout: layouts/base.njk
+title: "Yorba Linda Orthodontists | Find the Best Orthodontist Near You"
+---
+
+<header>
+    <div class="header-content">
+        <p class="header-eyebrow">{{ site.city }}, California</p>
+        <h1>Find an Orthodontist You'll Actually Like</h1>
+        <p>Real practices, honest info. No paid rankings—just the orthodontists your neighbors trust.</p>
+    </div>
+</header>
+
+<div class="container">
+    <div class="meta-bar">
+        <span>{{ listings | length }} orthodontists in {{ site.city }}</span>
+        <span>Updated {{ site.lastUpdated }}</span>
+    </div>
+    
+    <div class="filter-pills">
+        <button class="pill active">All</button>
+        <button class="pill">Invisalign</button>
+        <button class="pill">Kids & Teens</button>
+        <button class="pill">Free Consult</button>
+    </div>
+    
+    {% for listing in listings %}
+    <article class="listing{% if listing.featured %} featured{% endif %}">
+        {% if listing.featured %}<span class="featured-tag">Featured</span>{% endif %}
+        <div class="listing-header">
+            <h2><a href="/listings/{{ listing.slug }}/">{{ listing.name }}</a></h2>
+            <div class="rating">
+                <span class="stars">{% for i in range(0, listing.rating | round) %}★{% endfor %}</span>
+                <span class="rating-text">{{ listing.rating }} ({{ listing.reviewCount }})</span>
+            </div>
+        </div>
+        <p class="listing-location">{{ listing.address }} • {{ listing.city }}</p>
+        <div class="tags">
+            {% for service in listing.services %}
+            <span class="tag">{{ service }}</span>
+            {% endfor %}
+        </div>
+        <p class="listing-desc">{{ listing.description }}</p>
+        <div class="listing-footer">
+            <span class="phone">
+                {% if listing.phone %}
+                <a href="tel:{{ listing.phone | replace('(', '') | replace(')', '') | replace(' ', '') | replace('-', '') }}">{{ listing.phone }}</a>
+                {% else %}
+                See website
+                {% endif %}
+            </span>
+            <a href="/listings/{{ listing.slug }}/" class="btn">View Profile</a>
+        </div>
+    </article>
+    {% endfor %}
+    
+    <div class="cta-box">
+        <h3>Looking for orthodontic advice?</h3>
+        <p>Check out our guides on choosing the right treatment for you or your child.</p>
+        <a href="/blog/" class="btn">Read Our Articles</a>
+    </div>
+</div>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Best Orthodontists in {{ site.city }}, {{ site.state }}",
+    "description": "{{ site.description }}",
+    "numberOfItems": {{ listings | length }},
+    "itemListElement": [
+        {% for listing in listings %}
+        {
+            "@type": "ListItem",
+            "position": {{ loop.index }},
+            "item": {
+                "@type": "Dentist",
+                "name": "{{ listing.name }}",
+                "address": { 
+                    "@type": "PostalAddress", 
+                    "streetAddress": "{{ listing.address }}", 
+                    "addressLocality": "{{ listing.city }}", 
+                    "addressRegion": "{{ listing.state }}"
+                    {% if listing.zip %}, "postalCode": "{{ listing.zip }}"{% endif %}
+                }
+                {% if listing.phone %}, "telephone": "{{ listing.phone }}"{% endif %},
+                "aggregateRating": { 
+                    "@type": "AggregateRating", 
+                    "ratingValue": "{{ listing.rating }}", 
+                    "reviewCount": "{{ listing.reviewCount }}" 
+                }
+            }
+        }{% if not loop.last %},{% endif %}
+        {% endfor %}
+    ]
+}
+</script>

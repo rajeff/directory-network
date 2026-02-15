@@ -1,0 +1,15 @@
+{
+  "baseUrl": "https://ortho.cb.robotarmy.cloud",
+  "breakpoints": {
+    "mobile": 375,
+    "tablet": 768,
+    "desktop": 1200
+  },
+  "pages": [
+    { "path": "/", "name": "homepage" },
+    { "path": "/blog/", "name": "blog-index" },
+    { "path": "/blog/cost-of-braces-yorba-linda/", "name": "blog-article" },
+    { "path": "/listings/b-orthodontics/", "name": "listing-detail" },
+    { "path": "/add-listing/", "name": "add-listing" }
+  ]
+}

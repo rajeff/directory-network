@@ -1,0 +1,25 @@
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+<div class="article-header">
+    <p style="max-width: 800px; margin: 0 auto 0.5rem; font-size: 0.85rem; opacity: 0.7;"><a href="/blog/" style="color: var(--gold); text-decoration: none;">← All Articles</a></p>
+    <h1>{{ title }}</h1>
+    <p class="article-meta">{{ date | dateFormat }} • {{ site.city }} {{ site.niche }}</p>
+</div>
+
+<div class="article-content">
+    {{ content | safe }}
+    
+    <div class="cta-box">
+        <h3>Ready to find an orthodontist?</h3>
+        <p>Browse our directory of trusted {{ site.niche | lower }} in {{ site.city }}.</p>
+        <a href="/" class="btn">View Directory</a>
+        
+        {% if featuredListing %}
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-light);">
+            <strong>Our pick:</strong> <a href="/listings/{{ featuredListing }}/" style="color: var(--navy);">View featured listing →</a>
+        </p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
