@@ -55,20 +55,9 @@ body {
 
 .nav-links a:hover { opacity: 1; }
 
-/* Hamburger menu */
+/* Hamburger menu - hidden on desktop */
 .nav-toggle {
     display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-    z-index: 100;
-}
-
-.hamburger-icon {
-    color: white;
-    width: 24px;
-    height: 24px;
 }
 
 /* Header */
@@ -517,34 +506,51 @@ footer {
 }
 
 /* Responsive */
+/* Small mobile - shorten brand */
+@media (max-width: 480px) {
+    .nav { padding: 0.5rem 0.75rem; }
+    .nav-brand { font-size: 0.85rem; }
+}
+
 @media (max-width: 600px) {
     header h1 { font-size: 2rem; }
     .listing-header { flex-direction: column; }
     .listing-footer { flex-direction: column; gap: 1rem; text-align: center; }
     
     /* Mobile nav */
-    .nav { padding: 0.75rem 1rem; }
+    .nav { 
+        padding: 0.75rem 1rem;
+        overflow: visible;
+    }
     
     .nav-content {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        width: 100%;
+        gap: 0.5rem;
     }
     
     .nav-brand { 
-        font-size: 1rem; 
+        font-size: 1rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        flex: 1 1 auto;
+        min-width: 0;
     }
     
     .nav-toggle { 
-        display: flex !important; 
-        width: 44px;
-        height: 44px;
+        display: flex;
         align-items: center;
         justify-content: center;
-    }
-    
-    .hamburger-icon {
-        display: block !important;
+        width: 44px;
+        height: 44px;
+        background: transparent;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        flex: 0 0 44px;
     }
     
     .nav-links {
